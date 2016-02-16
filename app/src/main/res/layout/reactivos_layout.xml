@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_height="wrap_content"
+    android:layout_width="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="campitos.org.egelandroidv2.MainActivity"
+    android:id="@+id/layout_reactivos">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:orientation="vertical"
+            android:layout_height="wrap_content">
+
+
+    <Button
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/blanco"
+        android:background="@color/colorPrimary"
+        android:text="Ver pregunta"
+        android:layout_margin="10dp"
+        android:id="@+id/cargarReactivos"
+        android:layout_gravity="center_horizontal" />
+
+
+
+            <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Titulo de la pregunta"
+        android:visibility="invisible"
+        android:id="@+id/textoTituloPregunta" />
+
+
+<RadioGroup
+    android:layout_width="match_parent"
+    android:id="@+id/radioSeleccionado"
+    android:layout_height="wrap_content">
+
+
+    <RadioButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Opcion 1"
+        android:visibility="invisible"
+        android:id="@+id/radioOpcion1"
+        android:checked="false" />
+    <RadioButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Opcion 2"
+        android:visibility="invisible"
+        android:id="@+id/radioOpcion2"
+        android:checked="false" />
+
+    <RadioButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Opción 3"
+        android:visibility="invisible"
+        android:id="@+id/radioOpcion3"
+        android:checked="false" />
+
+    <RadioButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Opción 4"
+        android:visibility="invisible"
+        android:id="@+id/radioOpcion4"
+        android:checked="false" />
+</RadioGroup>
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Checar respuesta"
+        android:visibility="invisible"
+        android:textColor="@color/blanco"
+        android:background="@color/colorAccent"
+        android:padding="15dp"
+        android:layout_margin="10dp"
+        android:id="@+id/botonChecarRespuesta"
+        android:layout_gravity="center_horizontal" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/textoSinReactivos"
+                android:visibility="invisible"
+                android:textSize="20dp"
+                android:text="Aún no hay reactivos para este tema"
+                android:gravity="center" />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Retroalimentación"
+        android:visibility="invisible"
+        android:id="@+id/textRetroalimentacion"
+        android:layout_gravity="center_horizontal" />
+
+</LinearLayout>
+
+
+</ScrollView>
