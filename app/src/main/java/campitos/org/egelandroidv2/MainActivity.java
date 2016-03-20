@@ -442,6 +442,21 @@ static int numeroDeReactivoActual=0;
 
         }else if(id==R.id.guia_a2){
 
+            WebView textoGuias = (WebView) findViewById(R.id.textoGuias);
+
+            WebSettings settings = textoGuias.getSettings();
+
+            settings.setDefaultTextEncodingName("utf-8");
+            settings.setAllowContentAccess(true);
+            settings.setAllowFileAccess(true);
+            settings.setGeolocationEnabled(true);
+            settings.setLoadsImagesAutomatically(true);
+            //   textoGuias.loadUrl(datosGuias, "text/html; charset=utf-8", "UTF-8");
+            textoGuias.loadUrl("file:///android_asset/a2.html");
+            ocultarTodo();
+            ScrollView principal= (ScrollView) findViewById(R.id.layout_guias);
+            principal.setVisibility(View.VISIBLE);
+
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
