@@ -27,6 +27,11 @@ public class ServicioLeerGuias {
 
        String datos="nada";
        try{
+           /*
+           La clase AssetManager sirve para tener acceso a archivos directamente en la carpeta de assets (que tu
+           deberas de crear) por medio de una api de bajo nivel para abrir y leer archivos como stream de bytes
+          http://developer.android.com/reference/android/content/res/AssetManager.html
+            */
            AssetManager manager = ctx.getAssets();
            // URL url = new URL("http://www.weatherlink.com/user/sierraguadalupe/index.php?view=summary&headers=0");
           // HttpURLConnection con = (HttpURLConnection) url.openConnection();
