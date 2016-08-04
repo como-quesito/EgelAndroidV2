@@ -617,9 +617,11 @@ class TareaAsyncronicaGetReactivosArea extends AsyncTask<String,Integer,Integer>
                 Random rng = new Random(); // Ideally just create one instance globally
 // Note: use LinkedHashSet to maintain insertion order
                 Set<Integer> generated = new LinkedHashSet<Integer>();
-                while (generated.size() < 4)
+                //Aqui va el numero de reactivos a mostrarse o sea 10 preguntas
+                while (generated.size() < 10)
                 {
-                    Integer next = rng.nextInt(7) + 1;
+                    // Aqui va el numero total de reactivos en los que debe hacerse la asignacion aleatorio
+                    Integer next = rng.nextInt(reactivos.size()) + 1;
                     // As we're adding to a set, this will automatically do a containment check
                     generated.add(next);
                 }
