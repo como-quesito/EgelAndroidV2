@@ -8,10 +8,38 @@ import java.util.ArrayList;
 public class Reactivo {
 
     String tema;
+   String id;
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
 
     String pregunta;
     String retroalimentacion;
     String urlimagen;
+    boolean validado;
+    Integer claveProfesor;
+
+    public boolean isValidado() {
+        return validado;
+    }
+
+    public void setValidado(boolean validado) {
+        this.validado = validado;
+    }
+
+    public Integer getClaveProfesor() {
+        return claveProfesor;
+    }
+
+    public void setClaveProfesor(Integer claveProfesor) {
+        this.claveProfesor = claveProfesor;
+    }
+
     ArrayList<Opcion> opciones;
 
     public String getUrlimagen() {

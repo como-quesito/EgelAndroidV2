@@ -11,6 +11,7 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -37,10 +38,13 @@ import org.springframework.web.client.RestTemplate;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.LinkedHashSet;
+import java.util.Random;
+import java.util.Set;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
-    String url="http://unitec.elasticbeanstalk.com/profesor";
+    String url="http://unitec.elasticbeanstalk.com/reactivo";
     public String areaReactivos="";
     Typeface tf;
     ArrayList<Reactivo> reactivos;
@@ -58,7 +62,7 @@ static int numeroDeReactivoActual=0;
         dialogoCargado =new AlertDialog.Builder(this);
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+       // setSupportActionBar(toolbar);
         //Personalizamos el titulo de la inicial
        TextView titulo= (TextView) findViewById(R.id.titulo);
         tf=   Typeface.createFromAsset(getAssets(), "RobotoSlab-Light.ttf");
@@ -603,6 +607,25 @@ class TareaAsyncronicaGetReactivosArea extends AsyncTask<String,Integer,Integer>
                         Toast.LENGTH_LONG).show();
                 int tama = reactivos.size();
 
+                //VAMOS A REACOMODAR
+                ArrayList<Reactivo> aleatorios=new ArrayList<>();
+                int numeros[]=new int[3];
+                Random ran=new Random();
+              int entero=  ran.nextInt(14);
+              boolean  buscar=true;
+
+                Random rng = new Random(); // Ideally just create one instance globally
+// Note: use LinkedHashSet to maintain insertion order
+                Set<Integer> generated = new LinkedHashSet<Integer>();
+                while (generated.size() < 4)
+                {
+                    Integer next = rng.nextInt(7) + 1;
+                    // As we're adding to a set, this will automatically do a containment check
+                    generated.add(next);
+                }
+                for(int i:generated) {
+                    Log.i("XXXX", "Valor:" + i);
+                }
                 if (dialogito.isShowing()) {
                     dialogito.dismiss();
                 }

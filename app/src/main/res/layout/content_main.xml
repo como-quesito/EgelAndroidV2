@@ -6,9 +6,11 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:paddingBottom="@dimen/activity_vertical_margin"
+
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
+
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="campitos.org.egelandroidv2.MainActivity"
     android:id="@+id/contenido_principal"
@@ -16,6 +18,7 @@
 <LinearLayout
     android:layout_width="match_parent"
     android:orientation="vertical"
+
     android:layout_height="wrap_content">
     <TextView
         android:layout_width="match_parent"
@@ -24,16 +27,22 @@
         android:layout_height="wrap_content"
         android:text="Guía para el Egel de Ingeniería en Sistemas"
         android:id="@+id/titulo" />
+    <ImageView
+        android:layout_width="wrap_content"
+        android:src="@drawable/contents"
+        android:layout_gravity="center"
+        android:layout_height="wrap_content" />
 
     <TextView
         android:layout_width="match_parent"
         android:gravity="fill_horizontal"
         android:layout_height="wrap_content"
-        android:text="Esta guía está devidida en dos grandes secciones. La primer de ellas es la sección de guías, en ellas
-se encuentran todos los temas del Egel, puedes consultarlos off-line. \n Posteriormente está la sección de reactivos,
-en esta sección encontrarás de igual manera los temas del examen, esta sección requiere que tengas conexión a internet,
-ya que los reactivos constantemente están cambiando y se generan a partir de una base de
-datos externa."
+        android:text="Esta guía está devidida en dos grandes secciones: reactivos y guías.Para consultar los reactivos debes estar conectado
+        a internet, ya que constantemente se están actualizado, en esta sección
+se encuentran todos los temas del Egel. \n \n
+Para entrar al modo de simulación de examen CENEVAL deberás haber realizado un examen de todos los
+ temas y aprobarlos con una evaluación mínimo de 8 en todos. Al hacerlo automáticamente aparecerá un mensaje donde se te indicará
+ que ya puedes acceder a dicho examen."
         android:id="@+id/textoBienvenida" />
     </LinearLayout>
 </ScrollView>

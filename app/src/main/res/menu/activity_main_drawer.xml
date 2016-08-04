@@ -14,55 +14,7 @@
 
     </group>
 
-    <item android:title="Guías">
-        <menu>
-            <item
-                android:id="@+id/guia_a1"
-                android:icon="@drawable/ic_menu_share"
-                android:title="A1.Diagnostico de problema" />
-            <item
-                android:id="@+id/guia_a2"
-                android:icon="@drawable/ic_menu_send"
-                android:title="A2.Requerimientos" />
-            <item
-                android:id="@+id/guia_b1"
-                android:icon="@drawable/ic_menu_send"
-                android:title="B1. Diseño" />
-            <item
-                android:id="@+id/guia_b2"
-                android:icon="@drawable/ic_menu_manage"
-                android:title="B2. Desarrollo" />
-            <item
-                android:id="@+id/guia_b3"
-                android:icon="@drawable/ic_menu_slideshow"
-                android:title="B3. Implantación" />
-            <item
-                android:id="@+id/guia_b4"
-                android:icon="@drawable/ic_menu_send"
-                android:title="B4. Modelos" />
-            <item
-                android:id="@+id/guia_c1"
-                android:icon="@drawable/ic_menu_send"
-                android:title="C1. Administración" />
-            <item
-                android:id="@+id/guia_c2"
-                android:icon="@drawable/ic_menu_send"
-                android:title="C2. Calidad" />
-            <item
-                android:id="@+id/guia_d1"
-                android:icon="@drawable/ic_menu_send"
-                android:title="D1. Redes" />
-            <item
-                android:id="@+id/guia_d2"
-                android:icon="@drawable/ic_menu_send"
-                android:title="D2. Base de Datos" />
-            <item
-                android:id="@+id/guia_d3"
-                android:icon="@drawable/ic_menu_send"
-                android:title="D3. Programación" />
 
-        </menu>
-    </item>
 
     <item android:title="Reactivos">
         <menu>
@@ -113,5 +65,53 @@
 
         </menu>
     </item>
+    <item android:title="Guías">
+        <menu>
+            <item
+                android:id="@+id/guia_a1"
+                android:icon="@drawable/ic_menu_share"
+                android:title="A1.Diagnostico de problema" />
+            <item
+                android:id="@+id/guia_a2"
+                android:icon="@drawable/ic_menu_send"
+                android:title="A2.Requerimientos" />
+            <item
+                android:id="@+id/guia_b1"
+                android:icon="@drawable/ic_menu_send"
+                android:title="B1. Diseño" />
+            <item
+                android:id="@+id/guia_b2"
+                android:icon="@drawable/ic_menu_manage"
+                android:title="B2. Desarrollo" />
+            <item
+                android:id="@+id/guia_b3"
+                android:icon="@drawable/ic_menu_slideshow"
+                android:title="B3. Implantación" />
+            <item
+                android:id="@+id/guia_b4"
+                android:icon="@drawable/ic_menu_send"
+                android:title="B4. Modelos" />
+            <item
+                android:id="@+id/guia_c1"
+                android:icon="@drawable/ic_menu_send"
+                android:title="C1. Administración" />
+            <item
+                android:id="@+id/guia_c2"
+                android:icon="@drawable/ic_menu_send"
+                android:title="C2. Calidad" />
+            <item
+                android:id="@+id/guia_d1"
+                android:icon="@drawable/ic_menu_send"
+                android:title="D1. Redes" />
+            <item
+                android:id="@+id/guia_d2"
+                android:icon="@drawable/ic_menu_send"
+                android:title="D2. Base de Datos" />
+            <item
+                android:id="@+id/guia_d3"
+                android:icon="@drawable/ic_menu_send"
+                android:title="D3. Programación" />
 
+        </menu>
+    </item>
 </menu>
