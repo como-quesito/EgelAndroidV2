@@ -48,7 +48,11 @@ public class MainActivity extends AppCompatActivity
     public String areaReactivos="";
     Typeface tf;
     ArrayList<Reactivo> reactivos;
+    ArrayList<Reactivo> reactivosAleatorios;
+    boolean evaluar=false;
 static int numeroDeReactivoActual=0;
+    float calificacion=0;
+
     Reactivo reactivo;
     String respuestaReactivo="";
     String status="No";
@@ -90,6 +94,7 @@ static int numeroDeReactivoActual=0;
         EVENTO DE CARGADO DE REACTIVO SEGUN EL TEMA SELECCINADO
          */
        final Button botonReactivos= (Button) findViewById(R.id.cargarReactivos);
+
         botonReactivos.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -106,14 +111,15 @@ static int numeroDeReactivoActual=0;
 
             }
         });
+
         //El siguiente dialoguito es para que cheques alli la respuesta si es correcta o no
        final AlertDialog.Builder builder = new AlertDialog.Builder(this);
         //EL BOTON DE EVALUAR REACTIVO MUY IMPORTANTE
-    Button botonChecarRespuesta= (Button) findViewById(R.id.botonChecarRespuesta);
+    final Button botonChecarRespuesta= (Button) findViewById(R.id.botonChecarRespuesta);
         botonChecarRespuesta.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Button botonReactivos = (Button) findViewById(R.id.cargarReactivos);
+                final Button botonReactivos = (Button) findViewById(R.id.cargarReactivos);
                 botonReactivos.setEnabled(true);
 
 
@@ -128,24 +134,81 @@ static int numeroDeReactivoActual=0;
                     String elCorrecto = "Nada";
 
 
+
                     for (int i = 0; i < 4; i++) {
                         if (reactivo.getOpciones().get(i).isAcierto()) {
 
                             elCorrecto = reactivo.getOpciones().get(i).getTitulo();
                         }
-                        if (titulo.equals(elCorrecto)) status = "Correcto";
+                        if (titulo.equals(elCorrecto))
+                        {
+                            status = "Correcto";
+                            calificacion++;
+                        }
                         else status = "Falso";
+                    }
+
+  // AQUI VIENE LA EVALUACION!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+                    if(numeroDeReactivoActual==5){
+
+                        builder.setNegativeButton("Evaluar", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                // mandamos a la INTRODUCCION
+
+                                ocultarTodo();
+                                evaluar=false;
+                                numeroDeReactivoActual=0;
+                               float total=(calificacion/5)*10;
+                                ScrollView principal= (ScrollView) findViewById(R.id.contenido_evaluacion);
+                                principal.setVisibility(View.VISIBLE);
+                                Toast.makeText(getApplicationContext(),"Tu calificacion es:"+total,Toast.LENGTH_LONG).show();
+
+                            }
+                        });
+
+
                     }
                     builder.setMessage(respuestaReactivo)
                             .setTitle(status);
                     builder.setPositiveButton("Aceptar", new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int id) {
                             // User clicked OK button
+
+
+
+
                         }
                     });
 
+
                     AlertDialog dialog = builder.create();
                     dialog.show();
+
+                    //Aqui navegamos a la siguiente pregunta limpiamos tambien los radio buttons
+                    RadioGroup grupo= (RadioGroup) findViewById(R.id.radioSeleccionado);
+                    grupo.clearCheck();
+                    if(reactivos.size()>=1&& numeroDeReactivoActual<reactivos.size()) {
+                        mostrarReactivo(numeroDeReactivoActual);
+                        //para evitar que el chamaco vaya a otro reactivo sin contestar este
+                        botonReactivos.setEnabled(false);
+                        numeroDeReactivoActual++;
+
+                        botonReactivos.setText("Reactivo  " +numeroDeReactivoActual+" de "+reactivos.size() );
+                    }
+
+                    /*
+                    if(evaluar){
+                      builder.setMessage("Felicidades acabas de terminar tu primer exa-MENSITO").setTitle("Terminado").setPositiveButton("Aceptar", new DialogInterface.OnClickListener() {
+                          @Override
+                          public void onClick(DialogInterface dialog, int which) {
+
+                          }
+                      }).show();
+
+                    }*/
+
+
                 }else{
                     builder.setMessage("Debes de seleccionar una opción antes de checar la respuesta")
                             .setTitle("Selecciona una opción");
@@ -206,19 +269,26 @@ static int numeroDeReactivoActual=0;
         if (id == R.id.introduccion) {
             // INTRODUCCION
             ocultarTodo();
+            evaluar=false;
+            numeroDeReactivoActual=0;
 
             ScrollView principal= (ScrollView) findViewById(R.id.contenido_principal);
             principal.setVisibility(View.VISIBLE);
 
         } else if (id == R.id.temario) {
+            numeroDeReactivoActual=0;
+            evaluar=false;
 
         } else if (id == R.id.reactivos_a1) {
             /*
             invocamos el método de los reactivos
              */
+             limpiarScrollViewReactivos();
+            evaluar=false;
+
             previoABuscarReactivos();
             areaReactivos="A1";
-
+            numeroDeReactivoActual=0;
 
             TareaAsyncronicaGetReactivosArea area=
                     new TareaAsyncronicaGetReactivosArea();
@@ -237,7 +307,11 @@ static int numeroDeReactivoActual=0;
              */
             previoABuscarReactivos();
             areaReactivos="A2";
-
+            //Este lo ponemos para evitar que el boton quede hasta abajo junto con el ScrollView para que se ajusyte a como estab,
+            // pues de otra maneras si la pregunta es muy grande ya no se veria el boton  VER PREGUNTAS
+           limpiarScrollViewReactivos();
+            evaluar=false;
+            numeroDeReactivoActual=0;
 
             TareaAsyncronicaGetReactivosArea area=
                     new TareaAsyncronicaGetReactivosArea();
@@ -254,7 +328,9 @@ static int numeroDeReactivoActual=0;
              */
             previoABuscarReactivos();
             areaReactivos="B1";
-
+limpiarScrollViewReactivos();
+            numeroDeReactivoActual=0;
+            evaluar=false;
 
             TareaAsyncronicaGetReactivosArea area=
                     new TareaAsyncronicaGetReactivosArea();
@@ -274,8 +350,9 @@ static int numeroDeReactivoActual=0;
              */
             previoABuscarReactivos();
             areaReactivos="B2";
-
-
+limpiarScrollViewReactivos();
+            evaluar=false;
+            numeroDeReactivoActual=0;
             TareaAsyncronicaGetReactivosArea area=
                     new TareaAsyncronicaGetReactivosArea();
             area.execute(null, null, null);
@@ -294,8 +371,9 @@ static int numeroDeReactivoActual=0;
              */
             previoABuscarReactivos();
             areaReactivos="B3";
-
-
+limpiarScrollViewReactivos();
+            evaluar=false;
+            numeroDeReactivoActual=0;
             TareaAsyncronicaGetReactivosArea area=
                     new TareaAsyncronicaGetReactivosArea();
             area.execute(null, null, null);
@@ -315,7 +393,9 @@ static int numeroDeReactivoActual=0;
             previoABuscarReactivos();
             areaReactivos="B4";
 
-
+limpiarScrollViewReactivos();
+            evaluar=false;
+            numeroDeReactivoActual=0;
             TareaAsyncronicaGetReactivosArea area=
                     new TareaAsyncronicaGetReactivosArea();
             area.execute(null, null, null);
@@ -333,7 +413,9 @@ static int numeroDeReactivoActual=0;
              */
             previoABuscarReactivos();
             areaReactivos="C1";
-
+limpiarScrollViewReactivos();
+            evaluar=false;
+            numeroDeReactivoActual=0;
 
             TareaAsyncronicaGetReactivosArea area=
                     new TareaAsyncronicaGetReactivosArea();
@@ -352,8 +434,9 @@ static int numeroDeReactivoActual=0;
              */
             previoABuscarReactivos();
             areaReactivos="C2";
-
-
+            evaluar=false;
+            numeroDeReactivoActual=0;
+limpiarScrollViewReactivos();
             TareaAsyncronicaGetReactivosArea area=
                     new TareaAsyncronicaGetReactivosArea();
             area.execute(null, null, null);
@@ -371,8 +454,10 @@ static int numeroDeReactivoActual=0;
              */
             previoABuscarReactivos();
             areaReactivos="D1";
+            numeroDeReactivoActual=0;
 
-
+limpiarScrollViewReactivos();
+            evaluar=false;
             TareaAsyncronicaGetReactivosArea area=
                     new TareaAsyncronicaGetReactivosArea();
             area.execute(null, null, null);
@@ -390,7 +475,9 @@ static int numeroDeReactivoActual=0;
              */
             previoABuscarReactivos();
             areaReactivos="D2";
-
+limpiarScrollViewReactivos();
+            evaluar=false;
+            numeroDeReactivoActual=0;
 
             TareaAsyncronicaGetReactivosArea area=
                     new TareaAsyncronicaGetReactivosArea();
@@ -409,8 +496,9 @@ static int numeroDeReactivoActual=0;
              */
             previoABuscarReactivos();
             areaReactivos="D3";
-
-
+limpiarScrollViewReactivos();
+            evaluar=false;
+            numeroDeReactivoActual=0;
             TareaAsyncronicaGetReactivosArea area=
                     new TareaAsyncronicaGetReactivosArea();
             area.execute(null, null, null);
@@ -424,6 +512,7 @@ static int numeroDeReactivoActual=0;
 
         }
         else if(id==R.id.guia_a1){
+            evaluar=false;
             //El siguiente aunque es bueno , te vconviene usar el de loadUrl, si no no se ven las imagenes html
            // datosGuias = ServicioLeerGuias.servicioLeerGuias(getApplicationContext());
             //Texto guias con html
@@ -442,10 +531,12 @@ static int numeroDeReactivoActual=0;
             ocultarTodo();
             ScrollView principal= (ScrollView) findViewById(R.id.layout_guias);
             principal.setVisibility(View.VISIBLE);
+            numeroDeReactivoActual=0;
 
 
         }else if(id==R.id.guia_a2){
-
+            evaluar=false;
+            numeroDeReactivoActual=0;
             WebView textoGuias = (WebView) findViewById(R.id.textoGuias);
 
             WebSettings settings = textoGuias.getSettings();
@@ -591,6 +682,10 @@ class TareaAsyncronicaGetReactivosArea extends AsyncTask<String,Integer,Integer>
                 texto.setText("En este momento no tienes conexion a internet, no podemos mostrar los reactivos");
              Button boton= (Button) findViewById(R.id.cargarReactivos);
                 boton.setVisibility(View.INVISIBLE);
+             //Quitamos  el dialoguito de busqueda
+                if (dialogito.isShowing()) {
+                    dialogito.dismiss();
+                }
 
             }else {
                 TextView texto= (TextView) findViewById(R.id.textoSinReactivos);
@@ -605,29 +700,35 @@ class TareaAsyncronicaGetReactivosArea extends AsyncTask<String,Integer,Integer>
                 }
                 Toast.makeText(getApplicationContext(), "Encontrados:" + reactivos.size(),
                         Toast.LENGTH_LONG).show();
-                int tama = reactivos.size();
 
-                //VAMOS A REACOMODAR
-                ArrayList<Reactivo> aleatorios=new ArrayList<>();
-                int numeros[]=new int[3];
-                Random ran=new Random();
-              int entero=  ran.nextInt(14);
-              boolean  buscar=true;
 
-                Random rng = new Random(); // Ideally just create one instance globally
-// Note: use LinkedHashSet to maintain insertion order
+
+/**********************************************************************************************************
+     Checamos si las pregunats son más de 10 para hacer el acomodado al azar
+ **********************************************************************************************************/
+            if(reactivos.size()>5) {
+                Random rng = new Random(); //
+// El LinkedHashSet es para mantener el orden
                 Set<Integer> generated = new LinkedHashSet<Integer>();
                 //Aqui va el numero de reactivos a mostrarse o sea 10 preguntas
-                while (generated.size() < 10)
-                {
+                while (generated.size() < 5) {
                     // Aqui va el numero total de reactivos en los que debe hacerse la asignacion aleatorio
                     Integer next = rng.nextInt(reactivos.size()) + 1;
-                    // As we're adding to a set, this will automatically do a containment check
+                    // Agregamos
                     generated.add(next);
                 }
-                for(int i:generated) {
+                //Acomodamos los reactivos de acuerdo a los indices generados
+              reactivosAleatorios=new ArrayList<>();
+                for (int i : generated) {
                     Log.i("XXXX", "Valor:" + i);
+                    reactivosAleatorios.add(reactivos.get(i-1));
                 }
+
+               //Reasignamos el arraylist de reactivos a sólo los 10.
+                reactivos=reactivosAleatorios;
+
+
+            }//***************************** AQUI TERMINA EL ALGORITMO SI ES QUE NO SON MAS DE 10
                 if (dialogito.isShowing()) {
                     dialogito.dismiss();
                 }
@@ -668,8 +769,11 @@ class TareaAsyncronicaGetReactivosArea extends AsyncTask<String,Integer,Integer>
             }*/
             }//termina el esle
         }catch (Exception e){
+
+
             Toast.makeText(getApplicationContext(),
                     "NO se pudieron cargar los reactivos, revisa tu conexion wi-fi",Toast.LENGTH_LONG);
+
         }
 
 
@@ -704,9 +808,11 @@ class TareaAsyncronicaGetReactivosArea extends AsyncTask<String,Integer,Integer>
         ScrollView reactivos=(ScrollView)findViewById(R.id.layout_reactivos);
         ScrollView guias=(ScrollView)findViewById(R.id.layout_guias);
         ScrollView principal= (ScrollView) findViewById(R.id.contenido_principal);
+        ScrollView evalauciones=(ScrollView)findViewById(R.id.contenido_evaluacion);
         reactivos.setVisibility(View.INVISIBLE);
         guias.setVisibility(View.INVISIBLE);
         principal.setVisibility(View.INVISIBLE);
+        evalauciones.setVisibility(View.INVISIBLE);
     }
 
     public void mostrarReactivo(int indice){
@@ -763,6 +869,15 @@ class TareaAsyncronicaGetReactivosArea extends AsyncTask<String,Integer,Integer>
 
 
     }
+    /*
+    ESTE METODO SE INVOCA CADA QUE SE SELECCIONE UNA OPCION DEL MENU OFF CANVAS PARA EVITAR QUE EL BOTON QUEDE HASTA ABAJO
+     */
+public void limpiarScrollViewReactivos(){
+    TextView tv= (TextView) findViewById(R.id.textoTituloPregunta);
+    tv.setText("");
+    ScrollView sc= (ScrollView) findViewById(R.id.layout_reactivos);
+    sc.refreshDrawableState();
 
+}
 
 }

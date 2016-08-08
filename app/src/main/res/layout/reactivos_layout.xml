@@ -82,9 +82,10 @@
                 android:textColor="@color/blanco"
                 android:background="@color/colorPrimary"
                 android:text="Ver pregunta"
+                android:gravity="center"
                 android:layout_margin="10dp"
                 android:id="@+id/cargarReactivos"
-                android:layout_gravity="center_horizontal" />
+                android:layout_gravity="top" />
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -100,6 +101,7 @@
         android:visibility="invisible"
         android:id="@+id/textRetroalimentacion"
         android:layout_gravity="center_horizontal" />
+
 
 </LinearLayout>
 

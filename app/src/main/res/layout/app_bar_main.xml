@@ -24,6 +24,7 @@
     <include layout="@layout/content_main" />
     <include layout="@layout/reactivos_layout"/>
     <include layout="@layout/guias_layout"/>
+    <include layout="@layout/contenido_evaluaciones"/>
 
 
 
