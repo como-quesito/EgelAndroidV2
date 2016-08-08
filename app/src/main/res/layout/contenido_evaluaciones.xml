@@ -35,8 +35,12 @@
 
         <TextView
             android:layout_width="match_parent"
-            android:gravity="fill_horizontal"
+            android:gravity="center"
+            android:id="@+id/textoResultadoExamensito"
             android:layout_height="wrap_content"
-            android:text="Aqui irán las evaluaciones" />
+            android:textColor="@color/colorAccent"
+            android:textSize="21dp"
+            android:text="Aqui irán las evaluaciones"
+            android:layout_gravity="center" />
     </LinearLayout>
 </ScrollView>

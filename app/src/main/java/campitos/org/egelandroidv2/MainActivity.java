@@ -18,6 +18,7 @@ import android.view.View;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.ScrollView;
@@ -51,13 +52,19 @@ public class MainActivity extends AppCompatActivity
     ArrayList<Reactivo> reactivosAleatorios;
     boolean evaluar=false;
 static int numeroDeReactivoActual=0;
-    float calificacion=0;
+   static float totalCalificacion;
+    Button botonEvaluar;
+    Button botonReactivos;
+    TextView textoResultadoExamensito;
+    public LinearLayout layout_reactivos;
+    static float calificacion;
 
     Reactivo reactivo;
     String respuestaReactivo="";
     String status="No";
     String datosGuias="nada";
     AlertDialog.Builder dialogoCargado;
+    Button botonChecarRespuesta;
     AlertDialog dialogito;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,7 +72,15 @@ static int numeroDeReactivoActual=0;
 
         dialogoCargado =new AlertDialog.Builder(this);
         setContentView(R.layout.activity_main);
+        layout_reactivos= (LinearLayout) findViewById(R.id.linear_layout_reactivos);
+ botonEvaluar=new Button(getApplicationContext());
+ botonReactivos = (Button) findViewById(R.id.cargarReactivos);
+ botonChecarRespuesta= (Button) findViewById(R.id.botonChecarRespuesta);
+ textoResultadoExamensito= (TextView) findViewById(R.id.textoResultadoExamensito);
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+
+
        // setSupportActionBar(toolbar);
         //Personalizamos el titulo de la inicial
        TextView titulo= (TextView) findViewById(R.id.titulo);
@@ -93,7 +108,28 @@ static int numeroDeReactivoActual=0;
         /*
         EVENTO DE CARGADO DE REACTIVO SEGUN EL TEMA SELECCINADO
          */
-       final Button botonReactivos= (Button) findViewById(R.id.cargarReactivos);
+
+        //////////////////////////////////////////////////////////////////////////////
+        //BOTON EVALUAR
+        botonEvaluar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ocultarTodo();
+                evaluar=false;
+                numeroDeReactivoActual=0;
+               totalCalificacion=(calificacion/5)*10;
+                ScrollView principal= (ScrollView) findViewById(R.id.contenido_evaluacion);
+                principal.setVisibility(View.VISIBLE);
+
+                botonChecarRespuesta.setVisibility(View.VISIBLE);
+
+                Toast.makeText(getApplicationContext(),"Tu calificacion es:"+totalCalificacion,Toast.LENGTH_LONG).show();
+                layout_reactivos.removeView(botonEvaluar);
+                textoResultadoExamensito.setText("Calificación obtenida "+totalCalificacion);
+
+
+            }
+        });
 
         botonReactivos.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -115,13 +151,33 @@ static int numeroDeReactivoActual=0;
         //El siguiente dialoguito es para que cheques alli la respuesta si es correcta o no
        final AlertDialog.Builder builder = new AlertDialog.Builder(this);
         //EL BOTON DE EVALUAR REACTIVO MUY IMPORTANTE
-    final Button botonChecarRespuesta= (Button) findViewById(R.id.botonChecarRespuesta);
+
         botonChecarRespuesta.setOnClickListener(new View.OnClickListener() {
+
+
+
+
+
+
+
             @Override
             public void onClick(View v) {
-                final Button botonReactivos = (Button) findViewById(R.id.cargarReactivos);
-                botonReactivos.setEnabled(true);
 
+                botonReactivos.setEnabled(true);
+//Checamos si el numero de reactivo es == 5 para dar el boton de evaluar
+
+                botonEvaluar.setText("Evaluar");
+                if(numeroDeReactivoActual==5){
+
+                   layout_reactivos.addView(botonEvaluar);
+                   botonReactivos.setVisibility(View.INVISIBLE);
+                    botonChecarRespuesta.setVisibility(View.INVISIBLE);
+
+                    layout_reactivos.refreshDrawableState();
+
+                }else{
+                    layout_reactivos.removeView(botonEvaluar);
+                }
 
                 //LOgica de la evaluacion de los reactivos
 
@@ -143,32 +199,15 @@ static int numeroDeReactivoActual=0;
                         if (titulo.equals(elCorrecto))
                         {
                             status = "Correcto";
-                            calificacion++;
+                           // calificacion++;
+
                         }
                         else status = "Falso";
                     }
+                    ///CALIFICACION AQUIIIIIIII
+                    if(status.equals("Correcto"))calificacion++;
 
-  // AQUI VIENE LA EVALUACION!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-                    if(numeroDeReactivoActual==5){
-
-                        builder.setNegativeButton("Evaluar", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                // mandamos a la INTRODUCCION
-
-                                ocultarTodo();
-                                evaluar=false;
-                                numeroDeReactivoActual=0;
-                               float total=(calificacion/5)*10;
-                                ScrollView principal= (ScrollView) findViewById(R.id.contenido_evaluacion);
-                                principal.setVisibility(View.VISIBLE);
-                                Toast.makeText(getApplicationContext(),"Tu calificacion es:"+total,Toast.LENGTH_LONG).show();
-
-                            }
-                        });
-
-
-                    }
+                    Log.i("RATA",""+calificacion);
                     builder.setMessage(respuestaReactivo)
                             .setTitle(status);
                     builder.setPositiveButton("Aceptar", new DialogInterface.OnClickListener() {
@@ -223,6 +262,8 @@ static int numeroDeReactivoActual=0;
 
             }
         });
+        //////////////////////////////////////////////////////
+        //// TERMINA BOTONCHECARRESPUESTA
     }
 
     @Override
@@ -285,7 +326,8 @@ static int numeroDeReactivoActual=0;
              */
              limpiarScrollViewReactivos();
             evaluar=false;
-
+            calificacion=0;
+            layout_reactivos.removeView(botonEvaluar);
             previoABuscarReactivos();
             areaReactivos="A1";
             numeroDeReactivoActual=0;
@@ -307,6 +349,7 @@ static int numeroDeReactivoActual=0;
              */
             previoABuscarReactivos();
             areaReactivos="A2";
+            calificacion=0;
             //Este lo ponemos para evitar que el boton quede hasta abajo junto con el ScrollView para que se ajusyte a como estab,
             // pues de otra maneras si la pregunta es muy grande ya no se veria el boton  VER PREGUNTAS
            limpiarScrollViewReactivos();
@@ -318,6 +361,11 @@ static int numeroDeReactivoActual=0;
             area.execute(null, null, null);
             ocultarTodo();
             ocultarOpciones();
+
+
+
+
+
             ScrollView layout=(ScrollView)findViewById(R.id.layout_reactivos);
             layout.setVisibility(View.VISIBLE);
 
@@ -562,14 +610,23 @@ limpiarScrollViewReactivos();
     //Metodo previo a la bisuqueda de reactivos se debe invocar antes
     public void previoABuscarReactivos(){
         numeroDeReactivoActual=0;
+calificacion=0;
+        totalCalificacion=0;
 
-        //Ajustamos el texto de boton si no se queda guardaod lo de las preguntas
-        TextView textoSinReactivo= (TextView) findViewById(R.id.textoSinReactivos);
-        textoSinReactivo.setVisibility(View.INVISIBLE);
-        Button botonReactivos= (Button) findViewById(R.id.cargarReactivos);
-        botonReactivos.setEnabled(true);
-        botonReactivos.setVisibility(View.VISIBLE);
-        botonReactivos.setText("Ver preguntas");
+
+
+            //Ajustamos el texto de boton si no se queda guardaod lo de las preguntas
+            TextView textoSinReactivo= (TextView) findViewById(R.id.textoSinReactivos);
+            textoSinReactivo.setVisibility(View.INVISIBLE);
+
+            botonReactivos.setEnabled(true);
+            botonReactivos.setVisibility(View.VISIBLE);
+            botonReactivos.setText("Ver preguntas");
+        layout_reactivos.refreshDrawableState();
+
+
+        evaluar=false;
+
     }
 
     /*******************************************************************************
