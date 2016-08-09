@@ -126,7 +126,8 @@ static int numeroDeReactivoActual=0;
                 Toast.makeText(getApplicationContext(),"Tu calificacion es:"+totalCalificacion,Toast.LENGTH_LONG).show();
                 layout_reactivos.removeView(botonEvaluar);
                 textoResultadoExamensito.setText("Calificación obtenida "+totalCalificacion);
-
+                //La siguiente es el tema
+               // totalCalificacion+"tema:"+areaReactivos+" el nip es "+Constantes.nip
 
             }
         });
@@ -172,6 +173,12 @@ static int numeroDeReactivoActual=0;
                    layout_reactivos.addView(botonEvaluar);
                    botonReactivos.setVisibility(View.INVISIBLE);
                     botonChecarRespuesta.setVisibility(View.INVISIBLE);
+                    TextView titulo= (TextView) findViewById(R.id.textoTituloPregunta);
+                             titulo.setText("");
+                    RadioGroup grupo= (RadioGroup) findViewById((R.id.radioSeleccionado));
+                    titulo.setVisibility(View.INVISIBLE);
+                    grupo.setVisibility(View.INVISIBLE);
+
 
                     layout_reactivos.refreshDrawableState();
 
@@ -618,6 +625,13 @@ calificacion=0;
             //Ajustamos el texto de boton si no se queda guardaod lo de las preguntas
             TextView textoSinReactivo= (TextView) findViewById(R.id.textoSinReactivos);
             textoSinReactivo.setVisibility(View.INVISIBLE);
+
+
+      TextView titulo= (TextView) findViewById(R.id.textoTituloPregunta);
+       RadioGroup grupo= (RadioGroup) findViewById((R.id.radioSeleccionado));
+        titulo.setVisibility(View.VISIBLE);
+        grupo.setVisibility(View.VISIBLE);
+
 
             botonReactivos.setEnabled(true);
             botonReactivos.setVisibility(View.VISIBLE);

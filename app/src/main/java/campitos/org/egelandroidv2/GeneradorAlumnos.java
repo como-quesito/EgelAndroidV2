@@ -40,6 +40,7 @@ return alumnos;
        for( Alumno a:getTodos()){
             if(a.getNip()==miNip){
               autenticado=true;
+         Constantes.nip= a.getNip();
                 break;
             }
         }
