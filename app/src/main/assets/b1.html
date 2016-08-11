@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+                @font-face{
+                font-family: 'yo';
+                src:url('RobotoSlab-Light.ttf')
+                }
+                p,h2,h3{
+                text-align: justify;
+                color:darkolivegreen;
+                font-family: 'yo';
+                }
+                h1{
+            text-align: justify;
+            color:black;
+            font-family: 'yo';
+                  }
+        </style>
+    </head>
+    <body>
+        <h2>B1.  Diseño de la solución del problema de
+            tecnología de información ( 9.4% del total del examen y 17 reactivos)
+        </h2>
+        <p>
+            Cuando ya se ha desarrollado y aceptado el modelo de requisitos se comienza el desarrollo del modelo de análisis.
+            El objetivo del modelo de análisis es comprender y generar una arquitectura de objetos para el sistema en base a lo
+            especificado en el modelo de requisitos. Durante esta etapa no se considera el ambiente de implementación, lo cual
+            incluye al lenguaje de programación, manejador de base de datos, distribución o configuración de hardware, etc. En
+            otras palabras el análisis pretende modelar el sistema bajo condiciones ideales, garantizando que la arquitectura de
+            software resultante se suficientemente robusta y extensible para servir de base a la estructura lógica de la aplicación
+            pero sin consideraciones relativas al entorno de implementación que es posible que cambien incluso radicalmente.
+            Tarde o temprano el sistema tendrá que ser adaptado a las condiciones de implementación deseadas, algo que se hará
+            durante el diseño, cuando todas las consideraciones que han sido descartadas durante el análisis sean consideradas.
+            Es importante enfatizar que el modelo de análisis no es una reflexión del dominio del problema sino una
+            representación de ésta adaptada a la aplicación particular. El modelo de análisis genera una representación
+            conceptual del sistema, consistiendo de clases de objetos. Cada una de las clases de objetos contribuye de manera
+            especial para lograr la robustez de la arquitectura, como se muestra conceptualmente en la Figura siguiente.
+            </p>
+
+            <img src="b1a.png">
+            <h3>Arquitectura de Clases</h3>
+        <p>
+            El modelo de análisis tiene como objetivo generar una arquitectura de objetos que sirva como base para el diseño
+            posterior del sistema. Como se discutió en la introducción del libro, dependiendo del tipo de aplicación existen
+            diversas arquitecturas que se pueden utilizar, siendo de nuestro interés aquellas arquitecturas especialmente
+            diseñadas para el manejo de los sistemas de información, las cuales involucran ricas bordes de usuario y accesos a
+            base de datos como aspectos fundamentales de la arquitectura.
+            En término de las propias arquitecturas, éstas se distinguen según la organización de la funcionalidad que ofrecen
+            los objetos dentro de ellas o la dimensión de los objetos. Esta dimensión corresponde a los diferentes tipos de
+            funcionalidad que manejan los objetos dentro la arquitectura. Por ejemplo, en el caso de funcionalidad para el
+            manejo de bordes y base de datos, si existen tipos distintos de objetos para el manejo de cada una de estas por
+            separado, entonces se considera que la arquitectura es de dos dimensiones. Por el contrario, si todos los objetos
+            manejan de manera indistinta los dos tipos de funcionalidades, entonces se considera que la arquitectura es de una
+            sóla dimensión.
+            Si aplicamos el concepto de dimensión a los métodos estructurados, podemos ver que estos consisten de dos
+            dimensiones, correspondientes a funciones y datos. Las funciones representan un eje de comportamiento que no
+            guarda información, mientras que los datos se ubican en un eje de información que no contiene comportamiento. En
+            general, ejes de funcionalidad pueden corresponder a distintos tipos de funcionalidades, como se ve al contrastar
+            funciones y datos versus manejo de bordes y bases de datos. Sin embargo, la pregunta más importante que uno se
+            hace respecto al número y tipo de dimensiones es: ¿Si se diseña un sistema con múltiples dimensiones, se obtendría
+            un sistema más robusto y sensible a modificaciones? Ante todo esta pregunta se relaciona con el concepto de
+            modularidad, siendo muy aceptado que cuanto mayor sea la modularidad de un sistema mayor es su robustez y
+            extensibilidad. La respuesta particular a la pregunta tiene que ver con qué tan independiente sea un eje de
+            funcionalidad del otro, ya que en el caso de los métodos estructurados, usualmente se debe modificar las funciones
+            cada vez que se modifica la estructura de información, lo cual no es algo deseable. Si logramos ejes de funcionalidad
+            ortogonales, el efecto de cambios en una dimensión no debe afectar a las otras dimensiones. Y aunque estas
+            dimensiones no son del todo ortogonales, si son lo suficientemente independientes se puede limitar el efecto de
+            posibles cambios. En relación al número de dimensiones, esto depende de la funcionalidad que la arquitectura debe
+            manejar, algo que a su vez depende del tipo de aplicación que se está desarrollando.
+            En le caso de los sistemas de información, uno de las tipos de arquitecturas mas importantes es la arquitectua MVC –
+            Modelo, Vista, Control (Model, View, Control) popularizada por los ambientes de desarrollo de de Smalltalk. Esta
+            arquitectura se basa en tres dimensiones principales: Modelo (información), Vista (presentación) y Control
+            (comportamiento) como se muestra en la Figura siguiente.
+
+        </p>
+         <img src="b1b.png">
+         <p>
+             Diagrama de tres dimensiones correspondiente a la arquitectura MVC – Modelo, Vista, Control.
+             La vista o presentación de la información corresponde a las bordes que se le presentan al usuario para el manejo de
+             la información, donde por lo general pueden existir múltiples vistas sobre un mismo modelo. Típicamente la
+             información representa el dominio del problema y es almacenada en una base de datos. Por otro lado el control
+             corresponde a la manipulación de la información a través de sus diversas presentaciones. Y aunque existe cierta
+             dependencia entre estas tres dimensiones se considera que la manera de presentar la información es independiente de
+             la propia información y de cómo esta se controla. Sin embargo, cada una de ellas probablemente experimente
+             cambios a lo largo de la vida del sistema, donde el control es el más propenso a ser modificado, seguido de la vista y
+             finalmente el modelo. En el modelo de análisis descrito aquí utilizaremos como base la arquitectura MVC para
+             capturar estos tres aspectos de la funcionalidad, como se muestra en la Figura 7.3. Es importante notar la
+             correspondencia con las tres dimensiones utilizadas durante el modelo de requisitos. La razón de ser de las tres
+             dimensiones del modelo de requisitos realmente se deriva para lograr una rastreabilidad con la arquitectura que se
+             desarrollará en el modelo de análisis.
+
+         </p>
+    <img src="b1c.png">
+    <p>
+
+        Diagrama de tres dimensiones correspondiente a la arquitectura del modelo de análisis basado en el
+        modelo de casos de uso.<br>
+        La arquitectura para el modelo de análisis será implementada mediante tres tipos o estereotipos de objetos como
+        elementos básicos de desarrollo como veremos a continuación.
+
+    </p>
+    </body>
+</html>

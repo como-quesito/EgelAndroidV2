@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+                @font-face{
+                font-family: 'yo';
+                src:url('RobotoSlab-Light.ttf')
+                }
+                p,h2,h3{
+                text-align: justify;
+                color:darkolivegreen;
+                font-family: 'yo';
+                }
+            h1{
+            text-align: justify;
+            color:black;
+            font-family: 'yo';
+            }
+        </style>
+    </head>
+    <body style="margin:10px;">
+       <h2>D2. Gestión de bases de datos(12.2% del examen y 22 reactivos)</h2>
+       <h3>Etapas del diseño de bases de datos</h3>
+       <p> El diseño de una base de datos no es un proceso sencillo. Habitualmente, la
+           complejidad de la información y la cantidad de requisitos de los sistemas de
+           información hacen que sea complicado. Por este motivo, cuando se diseñan
+           bases de datos es interesante aplicar la vieja estrategia de dividir para vencer.
+           Por lo tanto, conviene descomponer el proceso del diseño en varias etapas; en
+           cada una se obtiene un resultado intermedio que sirve de punto de partida de
+           la etapa siguiente, y en la última etapa se obtiene el resultado deseado. De este
+           modo no hace falta resolver de golpe toda la problemática que plantea el diseño,
+           sino que en cada etapa se afronta un solo tipo de subproblema. Así se
+           divide el problema y, al mismo tiempo, se simplifica el proceso.
+       </p>
+    <p>
+        Descompondremos el diseño de bases de datos en tres etapas:
+        <br><br>
+        1) Etapa del diseño conceptual:<br> en esta etapa se obtiene una estructura de la
+        información de la futura BD independiente de la tecnología que hay que emplear.
+        No se tiene en cuenta todavía qué tipo de base de datos se utilizará –relacional,
+        orientada a objetos, jerárquica, etc.–; en consecuencia, tampoco se tiene
+        en cuenta con qué SGBD ni con qué lenguaje concreto se implementará la base
+        de datos. Así pues, la etapa del diseño conceptual nos permite concentrarnos
+        únicamente en la problemática de la estructuración de la información, sin tener
+        que preocuparnos al mismo tiempo de resolver cuestiones tecnológicas.
+        El resultado de la etapa del diseño conceptual se expresa mediante algún modelo
+        de datos de alto nivel. Uno de los más empleados es el modelo entidadinterrelación
+        (entity-relationship), que abreviaremos con la sigla ER.<br><br>
+
+        2) Etapa del diseño lógico: en esta etapa se parte del resultado del diseño
+        conceptual, que se transforma de forma que se adapte a la tecnología que se
+        debe emplear. Más concretamente, es preciso que se ajuste al modelo del
+        SGBD con el que se desea implementar la base de datos. Por ejemplo, si se trata
+        de un SGBD relacional, esta etapa obtendrá un conjunto de relaciones con sus
+        atributos, claves primarias y claves foráneas.<br>
+        Esta etapa parte del hecho de que ya se ha resuelto la problemática de la estructuración
+        de la información en un ámbito conceptual, y permite concentrarnos
+        en las cuestiones tecnológicas relacionadas con el modelo de base de
+        datos.<br>
+        Más adelante explicaremos cómo se hace el diseño lógico de una base de datos
+        relacional, tomando como punto de partida un diseño conceptual expresado
+        con el modelo ER; es decir, veremos cómo se puede transformar un modelo ER
+        en un modelo relacional.<br><br>
+        3) Etapa del diseño físico: en esta etapa se transforma la estructura obtenida
+        en la etapa del diseño lógico, con el objetivo de conseguir una mayor eficiencia;
+        además, se completa con aspectos de implementación física que dependerán
+        del SGBD.
+        Por ejemplo, si se trata de una base de datos relacional, la transformación de
+        la estructura puede consistir en lo siguiente: tener almacenada alguna relación
+        que sea la combinación de varias relaciones que se han obtenido en la etapa
+        del diseño lógico, partir una relación en varias, añadir algún atributo calculable
+        a una relación, etc. Los aspectos de implementación física que hay que
+        completar consisten normalmente en la elección de estructuras físicas de implementación
+        de las relaciones, la selección del tamaño de las memorias intermedias
+        (buffers) o de las páginas, etc.
+    </p>
+
+
+
+
+    </body>
+</html>

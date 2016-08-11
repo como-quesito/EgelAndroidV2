@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+                @font-face{
+                font-family: 'yo';
+                src:url('RobotoSlab-Light.ttf')
+                }
+                p,h2,h3{
+                text-align: justify;
+                color:darkolivegreen;
+                font-family: 'yo';
+                }
+                h1{
+            text-align: justify;
+            color:black;
+            font-family: 'yo';
+                  }
+        </style>
+    </head>
+    <body>
+        <h2>B2. Desarrollo de Sistemas (22.7% del examen y 41 reactivos)</h2>
+        <h3>Modelo de diseño</h3>
+        <p>
+            El modelo de diseño es un refinamiento y formalización adicional del modelo de análisis donde se toman en cuenta
+            las consecuencias del ambiente de implementación. El resultado del modelo de diseño son especificaciones muy
+            detalladas de todos los objetos, incluyendo sus operaciones y atributos.
+            Se requiere un modelo de diseño ya que el modelo de análisis no es lo suficientemente formal para poder llegar al
+            código fuente. Por tal motivo se debe refinar los objetos, incluyendo las operaciones que se deben ofrecer, la
+            comunicación entre los diferentes objetos, los eventos que los objetos envían entre si, etc. El sistema real debe
+            adaptarse al ambiente de implementación. En el análisis se asume un mundo ideal para el sistema, en la realidad se
+            debe adaptar el sistema al ambiente de implementación, algo que puede cambiar durante el ciclo de vida del sistema.
+            Se busca además aspectos como, los requisitos de rendimiento, necesidades de tiempo real, concurrencia, el lenguaje
+            de programación, el sistema de manejo de base de datos, etc. Se desea también validar los resultados del análisis.
+            Según el sistema crece y se formaliza, se verá qué tan bien los modelos de requisitos y análisis describen al sistema.
+            Durante el diseño, se puede ver si los resultados del análisis son apropiados para su implementación. Si se descubre
+            aspectos que no están claros en alguno de los modelos anteriores, estos deben ser clarificados, quizás regresando a
+            etapas anteriores.
+            Aunque esto pudiera verse como deficiencias del resultado de las fases anteriores que deben ser clarificadas aquí,
+            esto sería una visión incorrecta de las diferentes etapas del desarrollo, ya que el propósito de los modelos de
+            requisitos y análisis es comprender el sistema y darle una buena estructura. También es importante comprender que
+            las consideraciones tomadas en cuenta durante el diseño deben influir en la estructura del sistema lo menos posible.
+            Es la propia aplicación la que controla la estructura, no las circunstancias de su implementación.
+            Se considera el modelo de diseño como una formalización del espacio de análisis, extendiéndolo para incluir una
+            dimensión adicional correspondiente al ambiente de implementación, como se puede ver en el diagrama de la Figura.
+        </p>
+    <img src="b2a.png">
+    <p>
+        El diseño añade el ambiente de implementación como un nuevo eje de desarrollo.
+        Esta nueva dimensión correspondiente al ambiente de implementación debe considerarse al mismo tiempo que el
+        propio modelo es refinado. La meta es refinarlo hasta que sea fácil escribir código fuente. Como el modelo de
+        análisis define la arquitectura general del sistema, se busca obtener una arquitectura detallada como resultado del
+        modelo de diseño, de manera que haya una continuidad de refinamiento entre los dos modelos, como se puede ver
+        en el diagrama de la Figura 8.2. En particular se puede apreciar el cambio en los modelos a partir de la introducción
+        del ambiente de implementación
+
+    </p>
+    <img src="b2b.png"/>
+    <p>
+     El modelo de diseño es una continuación del modelo de análisis.
+        La transición de análisis a diseño debe decidirse por separado para cada aplicación particular. Aunque es posible
+        continuar trabajando sobre el modelo de análisis, incluso durante la incorporación del ambiente de implementación,
+        esto no es recomendable, ya que aumenta su complejidad. Por lo tanto, es deseable tener un modelo de análisis ideal
+        del sistema durante el ciclo de vida completo del sistema, dado que muchos de los cambios del sistema provienen de
+        cambios en el ambiente de implementación. Tales cambios son entonces fácilmente incorporados, ya que el mismo
+        modelo de análisis sirve de base para el nuevo modelo de diseño. De esta manera se puede ver el modelo de diseño
+        como una especialización del modelo de análisis según un ambiente de implementación específico.<br>
+        Si un cambio en el modelo de diseño proviene de un cambio en la lógica del sistema, entonces tales cambios deben
+        hacerse en el modelo de análisis. Sin embargo, si el cambio es una consecuencia de la implementación, entonces
+        tales cambios no deben ser incorporados en el modelo de análisis.<br><br>
+        Las estructuras con las cuales se trabaja en el modelo de diseño son básicamente las mismas que en el modelo de
+        análisis. Sin embargo, el punto de vista cambia, ya que se toma un paso hacia la implementación. El modelo de
+        análisis debe se visto como un modelo conceptual y lógico del sistema, mientras que el modelo de diseño debe
+        acercarse al código fuente. Esto significa que se cambia el punto del vista del modelo de diseño a una abstracción
+        del código fuente final. Por lo tanto el modelo de diseño debe ser una descripción de cómo el código fuente debe ser
+        estructurado, administrado y escrito.<br>
+        En cierta manera este enfoque es una extensión del concepto de la separación de la “política” de la implementación,
+        donde la política fue definida durante el modelo de análisis y el diseño tiene la responsabilidad mantener esta
+        separación durante el diseño de métodos, aquellos que sirven para tomar decisiones (control) y aquellos que no
+        (interface y entidad).<br>
+        En general, cambios en la arquitectura del sistema para mejorar el rendimiento del sistema deben ser pospuestos
+        hasta que el sistema esté (parcialmente) construido. La experiencia muestra que en los sistemas grandes y
+        complejos, uno frecuentemente adivina incorrectamente cuales son los cuellos de botella críticos al rendimiento.
+        Para hacer una evaluación más adecuada es necesario evaluar parte del rendimiento del sistema construido, algo que
+        también se puede ir adelantando a nivel de prototipos.
+
+    </p>
+    </body>
+</html>

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+                @font-face{
+                font-family: 'yo';
+                src:url('RobotoSlab-Light.ttf')
+                }
+                p,h2,h3{
+                text-align: justify;
+                color:darkolivegreen;
+                font-family: 'yo';
+                }
+            h1{
+            text-align: justify;
+            color:black;
+            font-family: 'yo';
+            }
+        </style>
+    </head>
+    <body style="margin:10px;">
+       <h2>B3. Implantación de sistemas (3.9% del examen y 7 reactivos)</h2>
+     <p>
+         El modelo de implementación toma el resultado del modelo de diseño para generar el código final. Esta traducción
+         debe ser relativamente sencilla y directa, ya que las decisiones mayores han sido tomadas durante las etapas previas.
+         Durante el modelo de implementación se hace una adaptación al lenguaje de programación y/o la base de datos de
+         acuerdo a la especificación del diseño y según las propiedades del lenguaje de implementación y base de datos.
+         Aunque el diseño de objetos es bastante independeniente del lenguaje actual, todos los lenguajes tendrán sus
+         particularidades, las cuales deberán adecuarse durante la implementación final. La elección del lenguaje influye en el
+         diseño, pero el diseño no debe depender de los detalles del lenguaje. Si se cambia de lenguaje de programación no
+         debe requerirse el re-diseño del sistema.<br><br>
+         En general, no se debe comenzar prematuramente a programar, es importante primero completar el proceso de
+         planeación del sistema final desarrollado durante el diseño. Se debe usar guías de programación existentes en la
+         organización. Si no existen, el equipo de software deben crear sus propias guías para decidir aspectos, como
+         formatos para la asignación de nombres a las variables, estilo de programación, métodos de documentación, y
+         documentación en línea. Vale la pena resaltar que aunque existe cierta automatización en el proceso de generación
+         del código final, en su gran mayoría los prgramadores hacen de manera “manual” la transición final a código fuente.<br><br>
+
+     </p>
+       <h3>Tecnología Orientada a Objetos</h3>
+       <p>
+       Dado que un aspecto primordial de este libro es el software orientado a objetos es entonces necesario comprender
+       que significa esta tecnología. Comenzamos discutiendo brevemente cuales son los mitos y cuales las realidades con
+       esta tecnología. Continuamos describiendo los aspectos básicos que distinguen a la programación orientada a objetos
+       con respecto a la manera tradicional de programación. El resto del capítulo describirá la motivación, y conceptos
+       detrás de esta tecnología junto con una breve reseña de los más importantes lenguajes orientados a objetos.
+       2.1 Mitos y Realidades
+       La orientación a objetos es un buen ejemplo de cómo un “pequeño detalle” puede significar tan crítico, algo similar
+       a la famosa frase de Neil Armstrong cuando pisó la luna: “Un pequeño paso para un hombre, un gran paso para la
+       humanidad”. Sin exagerar con la similitud analicemos qué significa este pequeño paso tecnológico que tanto ha
+       significado para el desarrollo de software.
+       2.1.1 Programación Tradicional
+       En la programación tradicional, conocida como estructurada, es separar los datos del programa de las funciones que
+       los manipulan. El programa o aplicación completa, consiste de múltiples datos y múltiples funciones, como se
+       muestra en la Figura</p>
+      <img src="b3a.png">
+    <p>
+    Programación estructural: datos y funciones globales.<br>
+        Esta forma de programar tiene sus orígenes en la arquitectura “von Neumann” de las primeras computadoras
+        modernas. La arquitectura básica es la misma utilizada en la actualidad a nivel comercial en las PCs y se basa de
+        manera simplificada en una unidad central de procesamiento (CPU) y una memoria donde se carga el programa o
+        aplicación que debe ejecutarse. (El disco duro guarda a largo plazo la aplicación para que ésta no se pierda pero no
+        juega un papel primordial cuando la aplicación se ejecuta.) La memoria en sí se divide en una sección donde se
+        guardan las funciones del programa, correspondiente al código que controla la lógica de la aplicación, y otra sección
+        de datos donde se guarda la información que quiere manipularse. Dada esta separación entre funciones y datos en la
+        memoria lo más lógico siempre ha sido utilizar una programación que se ajustara a ello dando origen a un gran
+        número de lenguajes basados en esta estructuración.<br><br>
+        Esta manera de programar tiene dos problemas principales. El primer problema es obligar a un programador a
+        pensar como la máquina, en lugar de lo opuesto. El segundo problema es que toda la información presente es
+        conocida y potencialmente utilizada por todas las funciones del programa y si se hiciera algún cambio en la
+        estructura de alguno de los datos (se consideran todos como “globales”), potencialmente habría que modificar todas
+        las funciones del programa para que éstas pudieran utilizar la nueva estructura.<br>
+        ¿Que tan problemático pudiese ser esto? Pues que mejor ejemplo que el problema del año 2000 donde un dato tan
+        insignificante como la fecha, que al cambiarse de dos a cuatro dígitos resultó en costos mundiales de cerca de $1
+        trillón de dólares. Lo que empeoró las cosas fue que todos estos programas tenían miles de funciones donde cada
+        una de ellas requería de la fecha para funcionar correctamente, cómo en el caso de aplicaciones bancarias y nóminas
+        de compañías.
+
+    </p>
+
+
+
+    </body>
+</html>

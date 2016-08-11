@@ -324,8 +324,24 @@ static int numeroDeReactivoActual=0;
             principal.setVisibility(View.VISIBLE);
 
         } else if (id == R.id.temario) {
-            numeroDeReactivoActual=0;
-            evaluar=false;
+
+                evaluar=false;
+                numeroDeReactivoActual=0;
+                WebView textoGuias = (WebView) findViewById(R.id.textoGuias);
+
+                WebSettings settings = textoGuias.getSettings();
+
+                settings.setDefaultTextEncodingName("utf-8");
+                settings.setAllowContentAccess(true);
+                settings.setAllowFileAccess(true);
+                settings.setGeolocationEnabled(true);
+                settings.setLoadsImagesAutomatically(true);
+                //   textoGuias.loadUrl(datosGuias, "text/html; charset=utf-8", "UTF-8");
+                textoGuias.loadUrl("file:///android_asset/temario.html");
+                ocultarTodo();
+                ScrollView principal= (ScrollView) findViewById(R.id.layout_guias);
+                principal.setVisibility(View.VISIBLE);
+
 
         } else if (id == R.id.reactivos_a1) {
             /*
@@ -581,7 +597,7 @@ limpiarScrollViewReactivos();
             settings.setAllowFileAccess(true);
             settings.setGeolocationEnabled(true);
             settings.setLoadsImagesAutomatically(true);
-         //   textoGuias.loadUrl(datosGuias, "text/html; charset=utf-8", "UTF-8");
+         //         textoGuias.loadUrl(datosGuias, "text/html; charset=utf-8", "UTF-8");
          textoGuias.loadUrl("file:///android_asset/a1.html");
             ocultarTodo();
             ScrollView principal= (ScrollView) findViewById(R.id.layout_guias);
@@ -603,6 +619,179 @@ limpiarScrollViewReactivos();
             settings.setLoadsImagesAutomatically(true);
             //   textoGuias.loadUrl(datosGuias, "text/html; charset=utf-8", "UTF-8");
             textoGuias.loadUrl("file:///android_asset/a2.html");
+            ocultarTodo();
+            ScrollView principal= (ScrollView) findViewById(R.id.layout_guias);
+            principal.setVisibility(View.VISIBLE);
+
+        }
+        else if(id==R.id.guia_b1){
+            evaluar=false;
+            numeroDeReactivoActual=0;
+            WebView textoGuias = (WebView) findViewById(R.id.textoGuias);
+
+            WebSettings settings = textoGuias.getSettings();
+
+            settings.setDefaultTextEncodingName("utf-8");
+            settings.setAllowContentAccess(true);
+            settings.setAllowFileAccess(true);
+            settings.setGeolocationEnabled(true);
+            settings.setLoadsImagesAutomatically(true);
+            //   textoGuias.loadUrl(datosGuias, "text/html; charset=utf-8", "UTF-8");
+            textoGuias.loadUrl("file:///android_asset/b1.html");
+            ocultarTodo();
+            ScrollView principal= (ScrollView) findViewById(R.id.layout_guias);
+            principal.setVisibility(View.VISIBLE);
+
+        }
+        else if(id==R.id.guia_b2){
+            evaluar=false;
+            numeroDeReactivoActual=0;
+            WebView textoGuias = (WebView) findViewById(R.id.textoGuias);
+
+            WebSettings settings = textoGuias.getSettings();
+
+            settings.setDefaultTextEncodingName("utf-8");
+            settings.setAllowContentAccess(true);
+            settings.setAllowFileAccess(true);
+            settings.setGeolocationEnabled(true);
+            settings.setLoadsImagesAutomatically(true);
+            //   textoGuias.loadUrl(datosGuias, "text/html; charset=utf-8", "UTF-8");
+            textoGuias.loadUrl("file:///android_asset/b2.html");
+            ocultarTodo();
+            ScrollView principal= (ScrollView) findViewById(R.id.layout_guias);
+            principal.setVisibility(View.VISIBLE);
+
+        }
+        else if(id==R.id.guia_b3){
+            evaluar=false;
+            numeroDeReactivoActual=0;
+            WebView textoGuias = (WebView) findViewById(R.id.textoGuias);
+
+            WebSettings settings = textoGuias.getSettings();
+
+            settings.setDefaultTextEncodingName("utf-8");
+            settings.setAllowContentAccess(true);
+            settings.setAllowFileAccess(true);
+            settings.setGeolocationEnabled(true);
+            settings.setLoadsImagesAutomatically(true);
+            //   textoGuias.loadUrl(datosGuias, "text/html; charset=utf-8", "UTF-8");
+            textoGuias.loadUrl("file:///android_asset/b3.html");
+            ocultarTodo();
+            ScrollView principal= (ScrollView) findViewById(R.id.layout_guias);
+            principal.setVisibility(View.VISIBLE);
+
+        }
+
+        else if(id==R.id.guia_b4){
+            evaluar=false;
+            numeroDeReactivoActual=0;
+            WebView textoGuias = (WebView) findViewById(R.id.textoGuias);
+
+            WebSettings settings = textoGuias.getSettings();
+
+            settings.setDefaultTextEncodingName("utf-8");
+            settings.setAllowContentAccess(true);
+            settings.setAllowFileAccess(true);
+            settings.setGeolocationEnabled(true);
+            settings.setLoadsImagesAutomatically(true);
+            //   textoGuias.loadUrl(datosGuias, "text/html; charset=utf-8", "UTF-8");
+            textoGuias.loadUrl("file:///android_asset/b4.html");
+            ocultarTodo();
+            ScrollView principal= (ScrollView) findViewById(R.id.layout_guias);
+            principal.setVisibility(View.VISIBLE);
+
+        }
+        else if(id==R.id.guia_c1){
+            evaluar=false;
+            numeroDeReactivoActual=0;
+            WebView textoGuias = (WebView) findViewById(R.id.textoGuias);
+
+            WebSettings settings = textoGuias.getSettings();
+
+            settings.setDefaultTextEncodingName("utf-8");
+            settings.setAllowContentAccess(true);
+            settings.setAllowFileAccess(true);
+            settings.setGeolocationEnabled(true);
+            settings.setLoadsImagesAutomatically(true);
+            //   textoGuias.loadUrl(datosGuias, "text/html; charset=utf-8", "UTF-8");
+            textoGuias.loadUrl("file:///android_asset/c1.html");
+            ocultarTodo();
+            ScrollView principal= (ScrollView) findViewById(R.id.layout_guias);
+            principal.setVisibility(View.VISIBLE);
+
+        }
+        else if(id==R.id.guia_c2){
+            evaluar=false;
+            numeroDeReactivoActual=0;
+            WebView textoGuias = (WebView) findViewById(R.id.textoGuias);
+
+            WebSettings settings = textoGuias.getSettings();
+
+            settings.setDefaultTextEncodingName("utf-8");
+            settings.setAllowContentAccess(true);
+            settings.setAllowFileAccess(true);
+            settings.setGeolocationEnabled(true);
+            settings.setLoadsImagesAutomatically(true);
+            //   textoGuias.loadUrl(datosGuias, "text/html; charset=utf-8", "UTF-8");
+            textoGuias.loadUrl("file:///android_asset/c2.html");
+            ocultarTodo();
+            ScrollView principal= (ScrollView) findViewById(R.id.layout_guias);
+            principal.setVisibility(View.VISIBLE);
+
+        }
+        else if(id==R.id.guia_d1){
+            evaluar=false;
+            numeroDeReactivoActual=0;
+            WebView textoGuias = (WebView) findViewById(R.id.textoGuias);
+
+            WebSettings settings = textoGuias.getSettings();
+
+            settings.setDefaultTextEncodingName("utf-8");
+            settings.setAllowContentAccess(true);
+            settings.setAllowFileAccess(true);
+            settings.setGeolocationEnabled(true);
+            settings.setLoadsImagesAutomatically(true);
+            //   textoGuias.loadUrl(datosGuias, "text/html; charset=utf-8", "UTF-8");
+            textoGuias.loadUrl("file:///android_asset/d1.html");
+            ocultarTodo();
+            ScrollView principal= (ScrollView) findViewById(R.id.layout_guias);
+            principal.setVisibility(View.VISIBLE);
+
+        }
+
+        else if(id==R.id.guia_d2){
+            evaluar=false;
+            numeroDeReactivoActual=0;
+            WebView textoGuias = (WebView) findViewById(R.id.textoGuias);
+
+            WebSettings settings = textoGuias.getSettings();
+
+            settings.setDefaultTextEncodingName("utf-8");
+            settings.setAllowContentAccess(true);
+            settings.setAllowFileAccess(true);
+            settings.setGeolocationEnabled(true);
+            settings.setLoadsImagesAutomatically(true);
+            //   textoGuias.loadUrl(datosGuias, "text/html; charset=utf-8", "UTF-8");
+            textoGuias.loadUrl("file:///android_asset/d2.html");
+            ocultarTodo();
+            ScrollView principal= (ScrollView) findViewById(R.id.layout_guias);
+            principal.setVisibility(View.VISIBLE);
+
+        }
+        else if(id==R.id.guia_d3){
+            evaluar=false;
+            numeroDeReactivoActual=0;
+            WebView textoGuias = (WebView) findViewById(R.id.textoGuias);
+
+            WebSettings settings = textoGuias.getSettings();
+
+            settings.setDefaultTextEncodingName("utf-8");
+            settings.setAllowContentAccess(true);
+            settings.setAllowFileAccess(true);
+            settings.setGeolocationEnabled(true);
+            settings.setLoadsImagesAutomatically(true);
+            //   textoGuias.loadUrl(datosGuias, "text/html; charset=utf-8", "UTF-8");
+            textoGuias.loadUrl("file:///android_asset/d3.html");
             ocultarTodo();
             ScrollView principal= (ScrollView) findViewById(R.id.layout_guias);
             principal.setVisibility(View.VISIBLE);
