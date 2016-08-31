@@ -9,6 +9,7 @@ import android.database.sqlite.SQLiteOpenHelper;
  */
 public class BaseDeDatos extends SQLiteOpenHelper {
     public static final int VERSION=1;
+    public int prueba;
     public static final String TABLA_ALUMNOS="CREATE TABLE alumno (nip integer primary key, nombre TEXT, numExamenes integer, acceso DATE);";
     public BaseDeDatos(Context context) {
         super(context, "ceneval",null, VERSION);
